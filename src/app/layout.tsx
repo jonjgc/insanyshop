@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import StyledComponentsRegistry from '@/lib/registry' // Importe o componente que criamos
+import StyledComponentsRegistry from '@/lib/registry'
+import { GlobalStyles } from '@/styles/GlobalStyles' 
+import { Header } from '@/components/Header' 
+import { Footer } from '@/components/Footer' 
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -18,7 +21,14 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <GlobalStyles /> 
+          <Header /> 
+          <main>
+            {children}
+          </main>
+          <Footer /> 
+        </StyledComponentsRegistry>
       </body>
     </html>
   )
