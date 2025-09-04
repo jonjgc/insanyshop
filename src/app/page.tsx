@@ -1,8 +1,10 @@
-export default function HomePage() {
+import { ProductList } from "@/components/ProductList";
+import { fetchAllProducts } from "@/services/products";
+
+export default async function HomePage() {
+  const products = await fetchAllProducts();
+
   return (
-    <div style={{ padding: '5rem' }}>
-      <h1>Página Principal</h1>
-      <p>O conteúdo dos produtos aparecerá aqui em breve.</p>
-    </div>
+    <ProductList products={products} />
   );
 }
