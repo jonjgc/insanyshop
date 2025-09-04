@@ -1,17 +1,26 @@
 'use client'
-
 import * as S from './styles';
+interface PaginationProps {
+  totalPages: number;
+  currentPage: number;
+}
 
-export function Pagination() {
+export function Pagination({ totalPages, currentPage }: PaginationProps) {
+  // Cria um array de números de 1 até totalPages
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
   return (
     <S.PaginationContainer>
-      <S.PageButton>{"<"}</S.PageButton>
-      <S.PageButton active>{1}</S.PageButton>
-      <S.PageButton>{2}</S.PageButton>
-      <S.PageButton>{3}</S.PageButton>
-      <S.PageButton>{4}</S.PageButton>
-      <S.PageButton>{5}</S.PageButton>
-      <S.PageButton>{">"}</S.PageButton>
+      {pages.map(page => (
+        <S.PageLink 
+          key={page} 
+          href={`/?page=${page}`} 
+          active={currentPage === page}
+        >
+          {page}
+        </S.PageLink>
+      ))}
+
     </S.PaginationContainer>
   );
 }

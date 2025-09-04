@@ -1,5 +1,4 @@
 'use client' 
-
 import styled from "styled-components";
 import { Product } from "@/types";
 import { ProductCard } from "../ProductCard";
@@ -23,9 +22,11 @@ const ProductsGrid = styled.div`
 
 interface ProductListProps {
   products: Product[];
+  totalPages: number;
+  currentPage: number;
 }
 
-export function ProductList({ products }: ProductListProps) {
+export function ProductList({ products, totalPages, currentPage }: ProductListProps) {
   return (
     <MainContainer>
       <PageTitle>Todos os produtos</PageTitle>
@@ -34,7 +35,7 @@ export function ProductList({ products }: ProductListProps) {
           <ProductCard key={product.id} product={product} />
         ))}
       </ProductsGrid>
-      <Pagination />
+      <Pagination totalPages={totalPages} currentPage={currentPage} />
     </MainContainer>
   );
 }

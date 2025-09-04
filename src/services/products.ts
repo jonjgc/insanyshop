@@ -1,10 +1,11 @@
 import { Product } from "@/types";
 
 const API_URL = 'https://api.insany.co/api/products';
+const ITEMS_PER_PAGE = 6;
 
-export async function fetchAllProducts(): Promise<Product[]> {
+export async function fetchAllProducts(page: number = 1): Promise<{ products: Product[], totalPages: number }> {
   try {
-    const response = await fetch(API_URL, {
+    const response = await fetch(`${API_URL}?page=${page}&limit=${ITEMS_PER_PAGE}`, {
       cache: 'no-store'
     });
 
@@ -14,11 +15,14 @@ export async function fetchAllProducts(): Promise<Product[]> {
 
     const data = await response.json();
 
-    // console.log('ESTRUTURA DE UM PRODUTO DA API:', data.products[0]);
-    return data.products || [];
+    return {
+      products: data.products || [],
+      totalPages: data.pagination.totalPages || 0
+    };
 
   } catch (error) {
     console.error(error);
-    return [];
+    
+    return { products: [], totalPages: 0 };
   }
 }
