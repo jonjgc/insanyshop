@@ -3,9 +3,20 @@ import { Product } from "@/types";
 const API_URL = 'https://api.insany.co/api/products';
 const ITEMS_PER_PAGE = 6;
 
-export async function fetchAllProducts(page: number = 1): Promise<{ products: Product[], totalPages: number }> {
+export async function fetchAllProducts(
+  page: number = 1, 
+  category?: string
+): Promise<{ products: Product[], totalPages: number }> {
   try {
-    const response = await fetch(`${API_URL}?page=${page}&limit=${ITEMS_PER_PAGE}`, {
+    const url = new URL(API_URL);
+    url.searchParams.append('page', String(page));
+    url.searchParams.append('limit', String(ITEMS_PER_PAGE));
+
+    if (category) {
+      url.searchParams.append('category', category);
+    }
+
+    const response = await fetch(url.toString(), {
       cache: 'no-store'
     });
 
@@ -22,7 +33,6 @@ export async function fetchAllProducts(page: number = 1): Promise<{ products: Pr
 
   } catch (error) {
     console.error(error);
-    
     return { products: [], totalPages: 0 };
   }
 }

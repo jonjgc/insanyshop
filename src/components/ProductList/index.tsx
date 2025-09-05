@@ -1,6 +1,7 @@
 'use client' 
 import styled from "styled-components";
-import { Product } from "@/types";
+import { Product, Category } from "@/types";
+import { CategoryFilter } from "../CategoryFilter";
 import { ProductCard } from "../ProductCard";
 import { Pagination } from "../Pagination"; 
 
@@ -24,12 +25,17 @@ interface ProductListProps {
   products: Product[];
   totalPages: number;
   currentPage: number;
+  categories?: Category[];
+  activeCategory?: string; 
+  title: string;
 }
 
-export function ProductList({ products, totalPages, currentPage }: ProductListProps) {
+export function ProductList({ products, totalPages, currentPage, categories, activeCategory, title }: ProductListProps) {
+ 
   return (
     <MainContainer>
-      <PageTitle>Todos os produtos</PageTitle>
+      <PageTitle>{title}</PageTitle>
+      {categories && <CategoryFilter categories={categories} activeCategory={activeCategory} />}
       <ProductsGrid>
         {products.map(product => (
           <ProductCard key={product.id} product={product} />
