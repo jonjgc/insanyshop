@@ -26,3 +26,26 @@ export async function fetchAllProducts(page: number = 1): Promise<{ products: Pr
     return { products: [], totalPages: 0 };
   }
 }
+
+export async function fetchProductById(id: string): Promise<Product | null> {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      cache: 'no-store'
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return null;
+      }
+      throw new Error('Falha ao buscar o produto da API.');
+    }
+
+    const data = await response.json();
+
+    return data.product || null;
+
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}

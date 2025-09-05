@@ -5,7 +5,7 @@ interface PageButtonProps {
   active?: boolean;
 }
 interface PageLinkProps {
-  active?: boolean;
+   $active?: boolean;
 }
 
 export const PaginationContainer = styled.nav`
@@ -49,8 +49,8 @@ export const PageLink = styled(Link)<PageLinkProps>`
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  text-decoration: none; // Remover sublinhado do link
-  display: flex; // Para centralizar o número
+  text-decoration: none;
+  display: flex;
   align-items: center;
   justify-content: center;
 
@@ -59,7 +59,7 @@ export const PageLink = styled(Link)<PageLinkProps>`
   }
 
   ${(props) =>
-    props.active &&
+    props.$active &&
     css`
       background-color: #ffffff;
       color: #f25d27;

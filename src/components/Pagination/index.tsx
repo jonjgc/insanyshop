@@ -6,7 +6,6 @@ interface PaginationProps {
 }
 
 export function Pagination({ totalPages, currentPage }: PaginationProps) {
-  // Cria um array de números de 1 até totalPages
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
@@ -15,7 +14,7 @@ export function Pagination({ totalPages, currentPage }: PaginationProps) {
         <S.PageLink 
           key={page} 
           href={`/?page=${page}`} 
-          active={currentPage === page}
+          $active={currentPage === page}
         >
           {page}
         </S.PageLink>
