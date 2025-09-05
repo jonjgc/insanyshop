@@ -1,19 +1,21 @@
 'use client'
 import styled from "styled-components";
+import Link from "next/link";
 
 export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 5rem; // Espaçamento interno
+  padding: 1.5rem 5rem;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 `;
 
-export const Logo = styled.span`
+export const Logo = styled(Link)`
   font-size: 2rem;
   font-weight: 600;
   color: #121214;
+  text-decoration: none;
 `;
 
 export const SearchInput = styled.input`
@@ -26,7 +28,7 @@ export const SearchInput = styled.input`
 `;
 
 export const CartContainer = styled.div`
-  position: relative; // Necessário para o posicionamento do badge
+  position: relative;
   cursor: pointer;
 `;
 
@@ -44,4 +46,8 @@ export const CartBadge = styled.span`
   justify-content: center;
   font-size: 0.75rem;
   font-weight: bold;
+`;
+
+export const SearchForm = styled.form`
+  width: 350px;
 `;

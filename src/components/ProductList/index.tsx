@@ -1,41 +1,55 @@
-'use client' 
-import styled from "styled-components";
-import { Product } from "@/types";
+'use client'
+import { useState, useMemo } from 'react';
+import { Category, Product } from "@/types";
+import { CategoryFilter } from "../CategoryFilter";
 import { ProductCard } from "../ProductCard";
-import { Pagination } from "../Pagination"; 
-
-const MainContainer = styled.main`
-  padding: 2rem 5rem;
-`;
-
-const PageTitle = styled.h2`
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 2rem;
-`;
-
-const ProductsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
-`;
+import { Pagination } from "../Pagination";
+import * as S from './styles';
 
 interface ProductListProps {
   products: Product[];
   totalPages: number;
   currentPage: number;
+  categories?: Category[];
+  activeCategory?: string;
+  title: string;
 }
 
-export function ProductList({ products, totalPages, currentPage }: ProductListProps) {
+export function ProductList({ products, totalPages, currentPage, categories, activeCategory, title }: ProductListProps) {
+  const [sortOrder, setSortOrder] = useState('news');
+
+  const sortedProducts = useMemo(() => {
+    const sorted = [...products];
+    switch (sortOrder) {
+      case 'price-desc':
+        return sorted.sort((a, b) => b.price - a.price);
+      case 'price-asc':
+        return sorted.sort((a, b) => a.price - b.price);
+      default:
+        return sorted;
+    }
+  }, [products, sortOrder]);
+
   return (
-    <MainContainer>
-      <PageTitle>Todos os produtos</PageTitle>
-      <ProductsGrid>
-        {products.map(product => (
+    <S.MainContainer>
+      <S.PageTitle>{title}</S.PageTitle>
+
+      <S.FiltersContainer>
+        {categories && <CategoryFilter categories={categories} activeCategory={activeCategory} />}
+        <S.SortFilter value={sortOrder} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSortOrder(e.target.value)}>
+          <option value="news">Novidades</option>
+          <option value="price-desc">Preço: Maior - menor</option>
+          <option value="price-asc">Preço: Menor - maior</option>
+        </S.SortFilter>
+      </S.FiltersContainer>
+
+      <S.ProductsGrid>
+        {sortedProducts.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
-      </ProductsGrid>
+      </S.ProductsGrid>
+
       <Pagination totalPages={totalPages} currentPage={currentPage} />
-    </MainContainer>
+    </S.MainContainer>
   );
 }

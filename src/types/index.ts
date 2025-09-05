@@ -8,3 +8,8 @@ export interface Product {
   rating: number; 
   stock: number;  
 }
+
+export interface Category {
+  id: string;
+  name: string;
+}
