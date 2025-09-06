@@ -1,4 +1,3 @@
-// src/components/ProductList/styles.ts
 'use client'
 import styled from "styled-components";
 
