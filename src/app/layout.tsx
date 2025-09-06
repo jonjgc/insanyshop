@@ -5,6 +5,7 @@ import { GlobalStyles } from '@/styles/GlobalStyles'
 import { Header } from '@/components/Header' 
 import { Footer } from '@/components/Footer' 
 import { CartProvider } from '@/contexts/CartContext';
+import { Toaster } from 'react-hot-toast';
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -25,6 +26,7 @@ export default function RootLayout({
         <CartProvider>
           <StyledComponentsRegistry>
             <GlobalStyles />
+            <Toaster position="top-center" reverseOrder={false} />
             <Header />
             <main>
               {children}

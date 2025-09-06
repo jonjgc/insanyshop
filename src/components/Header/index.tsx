@@ -1,14 +1,22 @@
 'use client'
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { FiShoppingCart } from 'react-icons/fi';
+import { useState, useEffect } from 'react'; 
+import { useRouter, usePathname } from 'next/navigation';
+import { FiShoppingBag } from 'react-icons/fi';
 import { useCart } from '@/contexts/CartContext';
 import * as S from './styles';
 
 export function Header() {
   const [searchValue, setSearchValue] = useState('');
   const router = useRouter();
-  const { cartItems } = useCart();
+  const { cartItemsCount } = useCart();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [pathname]);
+
 
   const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -25,6 +33,15 @@ export function Header() {
     }
   }
 
+  const handleCartClick = (e: React.MouseEvent) => {
+    if (pathname === '/carrinho') {
+      return;
+    }
+    e.preventDefault();
+    setIsLoading(true);
+    router.push('/carrinho');
+  }
+
   return (
     <S.HeaderContainer>
       <S.Logo href="/">InsanyShop</S.Logo>
@@ -38,10 +55,11 @@ export function Header() {
         />
       </S.SearchForm>
 
-      <S.CartContainer>
-        <FiShoppingCart size={24} />
-        {cartItems.length > 0 && <S.CartBadge>{cartItems.length}</S.CartBadge>}
+      <S.CartContainer href="/carrinho" onClick={handleCartClick}> 
+        {isLoading ? <S.Spinner /> : <FiShoppingBag size={24} />}
+        {cartItemsCount > 0 && <S.CartBadge>{cartItemsCount}</S.CartBadge>}
       </S.CartContainer>
+
     </S.HeaderContainer>
   )
 }

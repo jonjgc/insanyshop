@@ -1,6 +1,21 @@
 'use client'
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Link from "next/link";
+import { CgSpinner } from 'react-icons/cg';
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const Spinner = styled(CgSpinner)`
+  animation: ${spin} 1s linear infinite;
+  font-size: 24px;
+`;
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -27,9 +42,10 @@ export const SearchInput = styled.input`
   font-size: 1rem;
 `;
 
-export const CartContainer = styled.div`
+export const CartContainer = styled(Link)`
   position: relative;
   cursor: pointer;
+  color: inherit;
 `;
 
 export const CartBadge = styled.span`
