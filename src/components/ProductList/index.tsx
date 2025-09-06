@@ -1,10 +1,10 @@
-'use client'
-import { useState, useMemo } from 'react';
-import { Category, Product } from "@/types";
+'use client' 
 import { CategoryFilter } from "../CategoryFilter";
 import { ProductCard } from "../ProductCard";
 import { Pagination } from "../Pagination";
 import * as S from './styles';
+import { useState, useMemo } from 'react';
+import { Category, Product } from '@/types';
 
 interface ProductListProps {
   products: Product[];
