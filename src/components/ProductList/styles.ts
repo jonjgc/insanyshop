@@ -1,8 +1,13 @@
 'use client'
 import styled from "styled-components";
+import { device } from '@/styles/breakpoints';
 
 export const MainContainer = styled.main`
   padding: 2rem 5rem;
+
+  @media ${device.tablet} {
+    padding: 2rem 1rem;
+  }
 `;
 
 export const PageTitle = styled.h2`
@@ -31,4 +36,9 @@ export const ProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
+
+
+  @media ${device.mobile} {
+    grid-template-columns: 1fr;
+  }
 `;

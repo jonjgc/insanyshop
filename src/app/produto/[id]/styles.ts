@@ -1,16 +1,25 @@
 'use client'
 import styled from "styled-components";
+import { device } from '@/styles/breakpoints';
 
 export const Container = styled.main`
   padding: 2rem 5rem;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media ${device.tablet} {
+    padding: 2rem 1rem;
+  }
 `;
 
 export const ProductDetails = styled.div`
   display: flex;
   gap: 2rem;
   margin-top: 1.5rem;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
 `;
 
 export const ImageWrapper = styled.div`

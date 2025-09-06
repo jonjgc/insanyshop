@@ -9,16 +9,21 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: #f0f0f5; /* Um cinza bem claro, como nos layouts */
+    background-color: #f0f0f5;
     color: #333;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   button, input {
-    font-family: inherit; /* Garante que botões e inputs usem a mesma fonte */
+    font-family: inherit;
   }
 
   button {
     cursor: pointer;
+  }
+
+  button:focus-visible, a:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
   }
 `

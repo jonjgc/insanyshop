@@ -49,7 +49,12 @@ export default function CartPage() {
                             </S.ItemDetails>
                             <S.ItemPriceAndActions>
                                 <strong>{formatPrice(item.price * item.quantity)}</strong>
-                                <button onClick={() => removeFromCart(item.id)}><FiTrash2 /></button>
+                                <button 
+                                    onClick={() => removeFromCart(item.id)}
+                                    aria-label={`Remover ${item.name} do carrinho`}
+                                >
+                                    <FiTrash2 />
+                                </button>
                             </S.ItemPriceAndActions>
                         </S.CartItem>
                     ))}

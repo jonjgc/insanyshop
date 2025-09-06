@@ -1,6 +1,7 @@
 'use client'
 import styled from 'styled-components';
 import Link from "next/link";
+import { device } from '@/styles/breakpoints';
 
 export const Container = styled.main`
   padding: 2rem 10rem; 
@@ -8,6 +9,10 @@ export const Container = styled.main`
   margin: 0 auto;
   background-color: #f0f0f5;
   min-height: calc(100vh - 100px);
+
+  @media ${device.tablet} {
+    padding: 2rem 1rem;
+  }
 `;
 
 export const ContentWrapper = styled.div`
@@ -15,6 +20,10 @@ export const ContentWrapper = styled.div`
   justify-content: space-between;
   gap: 32px;
   margin-top: 24px;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
 `;
 
 export const CartItemsList = styled.div`
@@ -44,6 +53,11 @@ export const CartItem = styled.div`
   margin-bottom: 16px;
   overflow: hidden;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    height: auto;
+  }
 `;
 
 export const ItemImage = styled.div`
@@ -51,6 +65,10 @@ export const ItemImage = styled.div`
   width: 250px;
   height: 200px;
   flex-shrink: 0;
+
+  @media ${device.mobile} {
+    width: 100%;
+  }
 `;
 
 export const ItemDetails = styled.div`

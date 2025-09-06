@@ -2,6 +2,7 @@
 import styled, { keyframes } from "styled-components";
 import Link from "next/link";
 import { CgSpinner } from 'react-icons/cg';
+import { device } from '@/styles/breakpoints';
 
 const spin = keyframes`
   from {
@@ -24,6 +25,11 @@ export const HeaderContainer = styled.header`
   padding: 1.5rem 5rem;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 1.5rem 5rem;
+
+  @media ${device.tablet} {
+    padding: 1.5rem 2rem;
+  }
 `;
 
 export const Logo = styled(Link)`
@@ -31,6 +37,11 @@ export const Logo = styled(Link)`
   font-weight: 600;
   color: #121214;
   text-decoration: none;
+  font-size: 2rem;
+
+  @media ${device.mobile} {
+    font-size: 1.5rem; 
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -40,6 +51,12 @@ export const SearchInput = styled.input`
   border: 1px solid #e2e2e2;
   background-color: #f3f5f6;
   font-size: 1rem;
+  width: 350px;
+
+   @media ${device.tablet} {
+    width: 100%;
+    margin: 0 1rem;
+  }
 `;
 
 export const CartContainer = styled(Link)`
