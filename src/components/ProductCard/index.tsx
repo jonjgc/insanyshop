@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Product } from '@/types';
 import * as S from './styles';
 import Link from 'next/link';
+import { useCart } from '@/contexts/CartContext'; 
 import { FiStar, FiShoppingCart } from 'react-icons/fi';
 
 interface ProductCardProps {
@@ -17,6 +18,14 @@ const formatPrice = (price: number) => {
 };
 
 export function ProductCard({ product }: ProductCardProps) {
+
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    addToCart(product);
+  }
+
   return (
     <Link href={`/produto/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
       <S.CardContainer>
@@ -49,7 +58,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <S.StockInfo>{product.stock} em estoque</S.StockInfo>
           </S.PriceContainer>
 
-          <S.AddToCartButton>
+          <S.AddToCartButton onClick={handleAddToCart}>
             <FiShoppingCart size={18} />
             Adicionar
           </S.AddToCartButton>

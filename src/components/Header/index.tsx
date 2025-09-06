@@ -2,11 +2,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FiShoppingCart } from 'react-icons/fi';
+import { useCart } from '@/contexts/CartContext';
 import * as S from './styles';
 
 export function Header() {
   const [searchValue, setSearchValue] = useState('');
   const router = useRouter();
+  const { cartItems } = useCart();
 
   const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -38,7 +40,7 @@ export function Header() {
 
       <S.CartContainer>
         <FiShoppingCart size={24} />
-        <S.CartBadge>0</S.CartBadge>
+        {cartItems.length > 0 && <S.CartBadge>{cartItems.length}</S.CartBadge>}
       </S.CartContainer>
     </S.HeaderContainer>
   )

@@ -4,6 +4,7 @@ import StyledComponentsRegistry from '@/lib/registry'
 import { GlobalStyles } from '@/styles/GlobalStyles' 
 import { Header } from '@/components/Header' 
 import { Footer } from '@/components/Footer' 
+import { CartProvider } from '@/contexts/CartContext';
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,14 +22,16 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <StyledComponentsRegistry>
-          <GlobalStyles /> 
-          <Header /> 
-          <main>
-            {children}
-          </main>
-          <Footer /> 
-        </StyledComponentsRegistry>
+        <CartProvider>
+          <StyledComponentsRegistry>
+            <GlobalStyles />
+            <Header />
+            <main>
+              {children}
+            </main>
+            <Footer />
+          </StyledComponentsRegistry>
+        </CartProvider>
       </body>
     </html>
   )
