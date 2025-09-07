@@ -72,7 +72,7 @@ export const ItemImage = styled.div`
 `;
 
 export const ItemDetails = styled.div`
-  padding: 16px 0;
+  padding: 16px 10px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
