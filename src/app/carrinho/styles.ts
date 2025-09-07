@@ -198,6 +198,21 @@ export const CheckoutButton = styled.button`
   &:hover {
     background-color: #459C47;
   }
+
+   &:disabled {
+    background-color: #E9E9F0; 
+    cursor: not-allowed;
+    &:hover {
+      background-color: #E9E9F0; 
+    }
+  }
+`;
+
+export const EmptyCartMessage = styled.div`
+  padding: 2rem;
+  text-align: center;
+  color: #737380;
+  font-size: 1.2rem;
 `;
 
 export const HelpSection = styled.div`
