@@ -37,7 +37,7 @@ export function ProductList({ products, totalPages, currentPage, categories, act
       <S.FiltersContainer>
         {categories && <CategoryFilter categories={categories} activeCategory={activeCategory} />}
         <S.SortFilter value={sortOrder} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSortOrder(e.target.value)}>
-          <option value="news">Novidades</option>
+          <option value="news">Organizar por</option>
           <option value="price-desc">Preço: Maior - menor</option>
           <option value="price-asc">Preço: Menor - maior</option>
         </S.SortFilter>

@@ -1,5 +1,4 @@
 'use client'
-
 import { useRouter } from "next/navigation";
 import { Category } from "@/types";
 import * as S from './styles';
@@ -24,7 +23,7 @@ export function CategoryFilter({ categories, activeCategory }: CategoryFilterPro
   return (
     <S.FilterContainer>
       <S.FilterSelect value={activeCategory || 'all'} onChange={handleChange}>
-        <option value="all">Todas as categorias</option>
+        <option value="all">Selecione a categoria</option>
         {categories.map(category => (
           <option key={category.id} value={category.id}>
             {category.name}

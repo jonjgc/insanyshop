@@ -22,10 +22,37 @@ export const FiltersContainer = styled.div`
   align-items: center;
   margin-bottom: 2rem;
 
+  @media ${device.tablet} 
+    flex-direction: column;
+    align-items: stretch; 
+    gap: 1rem;
+  }
+
   @media ${device.mobile} {
     flex-direction: column; 
     align-items: stretch; 
     gap: 1rem;
+  }
+`;
+
+export const CategoryFilter = styled.select`
+  padding: 0.75rem 1rem;
+  border: 1px solid #dce2e5;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  color: #41414b;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2341414B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+
+  @media ${device.mobile} {
+    width: 100%; 
   }
 `;
 
@@ -36,6 +63,10 @@ export const SortFilter = styled.select`
   background-color: white;
   font-size: 1rem;
   cursor: pointer;
+
+  @media ${device.mobile} {
+    width: 100%; // 
+  }
 `;
 
 export const ProductsGrid = styled.div`
