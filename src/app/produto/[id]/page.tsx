@@ -2,7 +2,7 @@ import { fetchProductById } from "@/services/products";
 import Image from "next/image";
 import * as S from './styles';
 import { BackButton } from "@/components/BackButton";
-import { FiShoppingCart } from "react-icons/fi";
+import { ProductPageActions } from "@/components/ProductPageActions";
 
 const formatPrice = (price: number) => {
   return price.toLocaleString('pt-BR', {
@@ -31,10 +31,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
           <S.Price>{formatPrice(product.price)}</S.Price>
           <S.DescriptionTitle>DESCRIÇÃO</S.DescriptionTitle>
           <S.DescriptionText>{product.description}</S.DescriptionText>
-          <S.AddToCartButton>
-            <FiShoppingCart size={18} />
-            Adicionar
-          </S.AddToCartButton>
+          <ProductPageActions product={product} />
         </S.InfoWrapper>
       </S.ProductDetails>
     </S.Container>

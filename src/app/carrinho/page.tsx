@@ -79,7 +79,7 @@ export default function CartPage() {
                         <span>Total</span>
                         <span>{formatPrice(totalWithShipping)}</span>
                     </S.SummaryTotal>
-                    <S.CheckoutButton>FINALIZAR A COMPRA</S.CheckoutButton>
+                    <S.CheckoutButton disabled={cartItems.length === 0}>FINALIZAR A COMPRA</S.CheckoutButton>
 
                     <S.HelpSection>
                         <S.HelpTitle>AJUDA</S.HelpTitle>
