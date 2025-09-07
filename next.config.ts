@@ -9,7 +9,7 @@ const nextConfig = {
     ],
   },
   compiler: {
-    styledComponents: true, // Adicionar esta linha ajuda na integração com styled-components
+    styledComponents: true,
   },
   typescript: {
     ignoreBuildErrors: true,

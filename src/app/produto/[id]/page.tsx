@@ -33,7 +33,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
           <S.DescriptionText>{product.description}</S.DescriptionText>
           <S.AddToCartButton>
             <FiShoppingCart size={18} />
-            Adicionar ao carrinho
+            Adicionar
           </S.AddToCartButton>
         </S.InfoWrapper>
       </S.ProductDetails>
