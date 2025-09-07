@@ -25,10 +25,15 @@ export const HeaderContainer = styled.header`
   padding: 1.5rem 5rem;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  padding: 1.5rem 5rem;
 
   @media ${device.tablet} {
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
+  }
+
+  @media ${device.mobile} {
+    flex-wrap: wrap; 
+    justify-content: center;
+    padding: 1rem 1rem;
   }
 `;
 
@@ -37,32 +42,48 @@ export const Logo = styled(Link)`
   font-weight: 600;
   color: #121214;
   text-decoration: none;
-  font-size: 2rem;
+  flex-shrink: 0;
 
   @media ${device.mobile} {
     font-size: 1.5rem; 
+    margin-bottom: 0.5rem; 
+    width: 100%; 
+    text-align: center;
   }
 `;
 
 export const SearchInput = styled.input`
   width: 350px;
+  margin: 0 2rem;
   padding: 0.75rem 1rem;
   border-radius: 8px;
   border: 1px solid #e2e2e2;
   background-color: #f3f5f6;
   font-size: 1rem;
-  width: 350px;
 
    @media ${device.tablet} {
+   flex-grow: 1;
     width: 100%;
     margin: 0 1rem;
   }
+
+   @media ${device.mobile} {
+    order: 3; 
+    width: 100%;
+    margin: 0.5rem 0; 
+  }
 `;
 
-export const CartContainer = styled(Link)`
+export const CartContainer = styled(Link).attrs({ role: 'status' })`
   position: relative;
   cursor: pointer;
   color: inherit;
+  flex-shrink: 0; 
+
+  @media ${device.mobile} {
+    margin-left: auto; 
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export const CartBadge = styled.span`
