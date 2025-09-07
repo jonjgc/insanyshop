@@ -1,22 +1,49 @@
 'use client'
 import styled from "styled-components";
+import { device } from '@/styles/breakpoints';
 
 export const FooterContainer = styled.footer`
   padding: 4rem 5rem;
   background-color: #ffffff;
-  margin-top: 4rem; // Espaço para separar do conteúdo principal
+  margin-top: 4rem; 
+
+   @media ${device.tablet} {
+    padding: 2rem 2rem;
+  }
+
+  @media ${device.mobile} {
+    padding: 1.5rem 1rem;
+  }
 `;
 
 export const Title = styled.h2`
   font-size: 2rem;
   margin-bottom: 2rem;
   text-align: center;
+
+  @media ${device.tablet} {
+    font-size: 1.5rem;
+  }
+
+  @media ${device.mobile} {
+    font-size: 1.2rem;
+  }
 `;
 
 export const CategoryList = styled.div`
   display: flex;
   justify-content: center;
-  gap: 1rem; // Espaço entre os cards
+  gap: 1rem; 
+
+  @media ${device.tablet} {
+    gap: 0.75rem;
+  }
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 `;
 
 export const CategoryCard = styled.div`
@@ -35,5 +62,20 @@ export const CategoryCard = styled.div`
 
   span {
     color: #737380;
+  }
+
+  @media ${device.tablet} {
+    padding: 1rem 1.5rem;
+    strong {
+      font-size: 1rem;
+    }
+  }
+
+  @media ${device.mobile} {
+    padding: 1rem;
+    width: 80%; 
+    strong {
+      font-size: 0.9rem;
+    }
   }
 `;
