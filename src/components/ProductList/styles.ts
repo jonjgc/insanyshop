@@ -21,6 +21,12 @@ export const FiltersContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+
+  @media ${device.mobile} {
+    flex-direction: column; 
+    align-items: stretch; 
+    gap: 1rem;
+  }
 `;
 
 export const SortFilter = styled.select`
