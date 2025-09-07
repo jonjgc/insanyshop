@@ -8,7 +8,7 @@ O projeto foi construído seguindo um design pré-definido no Figma, com foco na
 
 A aplicação está no ar e pode ser visualizada através do seguinte link:
 
-**[Acessar a Loja Online](https://[https://insanyshop-sandy.vercel.app])**
+**[Acessar a Loja Online](https://insanyshop-sandy.vercel.app)**
 
 ## Funcionalidades Implementadas
 
