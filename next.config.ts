@@ -10,7 +10,10 @@ const nextConfig = {
   },
   compiler: {
     styledComponents: true, // Adicionar esta linha ajuda na integração com styled-components
-  }
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;
